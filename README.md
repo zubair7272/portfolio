@@ -1,36 +1,115 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mohammed Zubair Portfolio
+
+A modern, animated portfolio website built with Next.js, TypeScript, Tailwind CSS, and MongoDB.
+
+## Features
+
+- ✨ Modern, animated UI with Framer Motion
+- 🌓 Dark/light mode support
+- 📱 Fully responsive design
+- 🔒 Authentication system for admin access
+- 📝 Admin dashboard for content management
+- 🗄️ MongoDB database for storing portfolio data
+- 📊 Interactive and eye-catching components
+
+## Tech Stack
+
+- **Frontend**: Next.js, React, TypeScript, Tailwind CSS, Framer Motion
+- **Authentication**: NextAuth.js
+- **Database**: MongoDB with Mongoose
+- **Styling**: Tailwind CSS, SASS
+- **Icons**: Lucide React
+- **Animations**: Framer Motion, GSAP, Lottie
+- **Deployment**: Vercel (recommended)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js (v16 or higher)
+- MongoDB database (local or Atlas)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/portfolio.git
+   cd portfolio
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Create a `.env.local` file in the root directory with the following variables:
+   ```
+   MONGODB_URI=your_mongodb_connection_string
+   NEXTAUTH_SECRET=your_nextauth_secret_key
+   NEXTAUTH_URL=http://localhost:3000
+   ```
+
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Setting Up Admin User
+
+To create an initial admin user:
+
+1. Start the development server
+2. Visit [http://localhost:3000/api/setup](http://localhost:3000/api/setup)
+3. This will create an admin user with these credentials:
+   - Email: zubairmohammed7272@gmail.com
+   - Password: AdminPassword123!
+4. Login at [http://localhost:3000/admin/login](http://localhost:3000/admin/login)
+5. Change the default password immediately from the admin dashboard
+
+## Project Structure
+
+```
+portfolio/
+├── public/             # Static assets
+├── src/
+│   ├── app/            # Next.js App Router
+│   │   ├── (main)/     # Main portfolio routes
+│   │   ├── admin/      # Admin dashboard routes
+│   │   └── api/        # API routes
+│   ├── components/     # Reusable components
+│   │   ├── ui/         # UI components
+│   │   └── ...         # Other components
+│   ├── lib/            # Utility functions
+│   ├── models/         # MongoDB models
+│   ├── providers/      # Context providers
+│   └── types/          # TypeScript type definitions
+├── .env.local          # Environment variables
+└── ...                 # Config files
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Customization
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Styling
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Global styles are in `src/app/globals.css`
+- Component-specific styles use Tailwind CSS utility classes
+- Theme configuration is in `tailwind.config.ts`
 
-## Learn More
+### Content
 
-To learn more about Next.js, take a look at the following resources:
+Edit your portfolio content through the admin dashboard or directly in the MongoDB database.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Deploy the application to Vercel:
 
-## Deploy on Vercel
+```bash
+npm run build
+vercel
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License - see the LICENSE file for details.
