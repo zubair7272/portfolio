@@ -85,10 +85,10 @@ export default function HomePage() {
               I am a Software Development Engineer currently working at Computacenter in Bengaluru, with a focus on web development, data analytics, and machine learning.
             </p>
             <p className="text-muted-foreground">
-              With a strong foundation in Computer Science from CMR University and hands-on experience in multiple projects, I've developed expertise in a range of technologies including JavaScript, TypeScript, React, Node.js, MongoDB, and more.
+              With a strong foundation in Computer Science from CMR University and hands-on experience in multiple projects, I&apos;ve developed expertise in a range of technologies including JavaScript, TypeScript, React, Node.js, MongoDB, and more.
             </p>
             <p className="text-muted-foreground">
-              My professional journey has equipped me with skills in collaborative development, software testing, debugging, and a keen eye for detail. I'm passionate about creating efficient solutions and continuously expanding my knowledge in emerging technologies.
+              My professional journey has equipped me with skills in collaborative development, software testing, debugging, and a keen eye for detail. I&apos;m passionate about creating efficient solutions and continuously expanding my knowledge in emerging technologies.
             </p>
             <div className="pt-4">
               <h3 className="mb-2 text-lg font-semibold">Areas of Interest</h3>
@@ -226,7 +226,7 @@ export default function HomePage() {
           />
           <TimelineItem
             title="SSLC"
-            company="St Joseph's English High School"
+            company="St Joseph&apos;s English High School"
             location="Bengaluru"
             period="June 2016 - Apr 2017"
           />
@@ -303,7 +303,7 @@ export default function HomePage() {
           >
             <h3 className="text-xl font-semibold">Get in Touch</h3>
             <p className="text-muted-foreground">
-              Feel free to reach out to me for any opportunities, collaborations, or just to say hello. I'm always open to discussing new projects and ideas.
+              Feel free to reach out to me for any opportunities, collaborations, or just to say hello. I&apos;m always open to discussing new projects and ideas.
             </p>
             <div className="space-y-3 pt-4">
               <div className="flex items-center">

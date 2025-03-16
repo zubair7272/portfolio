@@ -34,8 +34,8 @@ export default function LoginPage() {
       }
 
       router.push("/admin/dashboard");
-    } catch (error) {
-      setError("An unexpected error occurred. Please try again.");
+    } catch (err) {
+      setError("An unexpected error occurred. Please try again." + err);
       setIsLoading(false);
     }
   };

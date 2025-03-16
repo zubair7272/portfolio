@@ -1,9 +1,10 @@
-import { NextRequest, NextResponse } from "next/server";
+// import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { connectToDatabase } from "@/lib/db";
 import User from "@/models/User";
 import bcrypt from "bcryptjs";
-
-export async function GET(req: NextRequest) {
+// export async function GET(req : NextRequest) {
+export async function GET() {
   try {
     // Check if we're in development mode
     if (process.env.NODE_ENV !== "development") {
