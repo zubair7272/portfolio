@@ -60,7 +60,7 @@ export default function HomePage() {
               className="flex justify-center"
             >
               <div className="relative h-[300px] w-[300px] overflow-hidden rounded-full border-4 border-primary/20 shadow-xl sm:h-[400px] sm:w-[400px]">
-                <div className="animate-float h-full w-full rounded-full bg-gradient-to-br from-primary/20 via-accent/20 to-secondary/20">
+                <div className="h-full w-full rounded-full bg-gradient-to-br from-primary/20 via-accent/20 to-secondary/20">
                   {/* Profile image */}
                   <Image 
                     src="/Profile.JPG" 
@@ -184,7 +184,7 @@ export default function HomePage() {
           <SkillCard
             className="md:col-span-2 lg:col-span-3"
             title="Other Skills"
-            skills={["Programming", "Software Developing", "Collaboration", "Software Testing", "Debugging", "Attention To Detail", "Problem Solving"]}
+            skills={["Programming", "Software Developing", "Software Testing", "Debugging", "Problem Solving"]}
           />
         </div>
       </SectionContainer>
