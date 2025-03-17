@@ -63,7 +63,7 @@ export function Header() {
           </div>
           <nav className="flex items-center">
             <ThemeToggle />
-            {session ? (
+            {/* {session ? (
               <Link href="/admin/dashboard">
                 <motion.div
                   whileHover={{ scale: 1.05 }}
@@ -83,7 +83,7 @@ export function Header() {
                   Login
                 </motion.div>
               </Link>
-            )}
+            )} */}
           </nav>
         </div>
       </div>

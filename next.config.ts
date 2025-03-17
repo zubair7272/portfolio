@@ -6,10 +6,6 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  output: 'standalone',
-  experimental: {
-    serverComponentsExternalPackages: ['mongoose']
-  },
 };
 
 module.exports = nextConfig;

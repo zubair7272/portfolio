@@ -61,8 +61,15 @@ export default function HomePage() {
             >
               <div className="relative h-[300px] w-[300px] overflow-hidden rounded-full border-4 border-primary/20 shadow-xl sm:h-[400px] sm:w-[400px]">
                 <div className="animate-float h-full w-full rounded-full bg-gradient-to-br from-primary/20 via-accent/20 to-secondary/20">
-                  {/* Add your profile image here */}
-                  {/* <Image src="/profile.jpg" alt="Mohammed Zubair" fill className="object-cover" /> */}
+                  {/* Profile image */}
+                  <Image 
+                    src="/Profile.jpg" 
+                    alt="Mohammed Zubair" 
+                    fill 
+                    className="object-cover"
+                    priority
+                    unoptimized
+                  />
                 </div>
               </div>
             </motion.div>
