@@ -63,12 +63,11 @@ export default function HomePage() {
                 <div className="animate-float h-full w-full rounded-full bg-gradient-to-br from-primary/20 via-accent/20 to-secondary/20">
                   {/* Profile image */}
                   <Image 
-                    src="/Profile.jpg" 
+                    src="/Profile.JPG" 
                     alt="Mohammed Zubair" 
                     fill 
                     className="object-cover"
                     priority
-                    unoptimized
                   />
                 </div>
               </div>
