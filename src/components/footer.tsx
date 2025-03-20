@@ -77,7 +77,7 @@ export function Footer() {
               </a>
               <div className="flex space-x-4 pt-2">
                 <a
-                  href="https://github.com/MohammedZubair"
+                  href="https://github.com/zubair7272"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-foreground"
@@ -85,7 +85,7 @@ export function Footer() {
                   <Github className="h-5 w-5" />
                 </a>
                 <a
-                  href="https://linkedin.com/in/MohammedZubair"
+                  href="https://www.linkedin.com/in/zubair7272/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-foreground"
