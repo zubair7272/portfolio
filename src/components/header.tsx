@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { ThemeToggle } from "./theme-toggle";
 import { cn } from "@/lib/utils";
-import { useSession } from "next-auth/react";
+import { SignInButton, SignedIn, SignedOut, UserButton, useUser } from "@clerk/nextjs";
 
 const navItems = [
   { name: "Home", path: "/" },
@@ -18,7 +18,8 @@ const navItems = [
 
 export function Header() {
   const pathname = usePathname();
-  const { data: session } = useSession();
+  const { user } = useUser();
+  const isAdmin = user?.publicMetadata?.role === 'admin';
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-neutral-200/40 dark:border-neutral-800/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -61,29 +62,23 @@ export function Header() {
               {/* Search component can go here */}
             </div>
           </div>
-          <nav className="flex items-center">
+          <nav className="flex items-center space-x-4">
             <ThemeToggle />
-            {/* {session ? (
-              <Link href="/admin/dashboard">
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="ml-4 text-sm font-medium text-foreground/60 hover:text-foreground"
-                >
+            <SignedIn>
+              {isAdmin && (
+                <Link href="/admin/dashboard" className="text-sm font-medium text-foreground/60 hover:text-foreground">
                   Dashboard
-                </motion.div>
-              </Link>
-            ) : (
-              <Link href="/admin/login">
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="ml-4 text-sm font-medium text-foreground/60 hover:text-foreground"
-                >
+                </Link>
+              )}
+              <UserButton afterSignOutUrl="/" />
+            </SignedIn>
+            <SignedOut>
+              <SignInButton mode="modal">
+                <button className="text-sm font-medium text-foreground/60 hover:text-foreground">
                   Login
-                </motion.div>
-              </Link>
-            )} */}
+                </button>
+              </SignInButton>
+            </SignedOut>
           </nav>
         </div>
       </div>

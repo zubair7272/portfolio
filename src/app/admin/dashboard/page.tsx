@@ -1,8 +1,7 @@
 "use client";
 
-import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import {  useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { 
@@ -18,21 +17,24 @@ import {
   Home
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { signOut } from "next-auth/react";
+import { useClerk, useUser, UserButton } from "@clerk/nextjs";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function AdminDashboard() {
-  const { data: session, status } = useSession();
+  const { signOut } = useClerk();
+  const { user, isLoaded } = useUser();
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("profile");
   
-  // useEffect(() => {
-  //   if (status === "unauthenticated") {
-  //     router.push("/admin/login");
-  //   }
-  // }, [status, router]);
+  useEffect(() => {
+    if (isLoaded && !user) {
+      router.push("/admin/login");
+    } else if (isLoaded && user?.publicMetadata?.role !== 'admin') {
+      router.push("/");
+    }
+  }, [isLoaded, user, router]);
 
-  if (status === "loading") {
+  if (!isLoaded) {
     return (
       <div className="flex min-h-screen items-center justify-center">
         <div className="animate-pulse text-xl">Loading...</div>
@@ -40,8 +42,12 @@ export default function AdminDashboard() {
     );
   }
 
+  if (!user || user.publicMetadata?.role !== 'admin') {
+    return null;
+  }
+
   const handleSignOut = async () => {
-    await signOut({ redirect: false });
+    await signOut();
     router.push("/");
   };
 
@@ -59,41 +65,41 @@ export default function AdminDashboard() {
     <div className="flex min-h-screen flex-col bg-background md:flex-row">
       {/* Sidebar */}
       <motion.aside
-        initial={{ x: -100, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
-        className="border-r border-neutral-200 dark:border-neutral-800 bg-card md:w-64"
+        className="w-64 border-r border-neutral-200 dark:border-neutral-800 bg-card p-4"
       >
-        <div className="flex h-16 items-center justify-between border-b border-neutral-200 dark:border-neutral-800 px-6">
-          <span className="text-lg font-semibold">Admin Dashboard</span>
-          <ThemeToggle />
-        </div>
-        <div className="flex flex-col p-4">
-          <div className="mb-6 flex items-center space-x-4 border-b border-neutral-200 dark:border-neutral-800 pb-4">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
-              <User className="h-5 w-5" />
-            </div>
+        <div className="flex h-full flex-col">
+          <div className="flex items-center justify-between border-b border-neutral-200 dark:border-neutral-800 pb-4">
+            <h1 className="text-xl font-bold">Admin Panel</h1>
+            <ThemeToggle />
+          </div>
+          
+          <div className="my-4 flex items-center space-x-3 rounded-lg border border-neutral-200 dark:border-neutral-800 p-3">
+            <UserButton />
             <div>
-              <p className="font-medium">{session?.user?.name}</p>
-              <p className="text-xs text-muted-foreground">{session?.user?.email}</p>
+              <p className="text-sm font-medium">Admin</p>
             </div>
           </div>
-          <nav className="space-y-1">
+
+          <nav className="mb-4 space-y-1">
             {sidebarItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => setActiveTab(item.id)}
-                className={`flex w-full items-center rounded-md px-3 py-2 text-sm ${
+                className={`flex w-full items-center space-x-3 rounded-lg px-3 py-2 text-sm ${
                   activeTab === item.id
                     ? "bg-primary/10 text-primary"
-                    : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                    : "text-muted-foreground hover:bg-muted"
                 }`}
               >
-                <span className="mr-3">{item.icon}</span>
-                {item.label}
+                {item.icon}
+                <span>{item.label}</span>
               </button>
             ))}
           </nav>
+
           <div className="mt-auto space-y-3 pt-6">
             <Button asChild variant="outline" className="w-full justify-start">
               <Link href="/">
