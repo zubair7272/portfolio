@@ -2,6 +2,11 @@
 
 A modern, animated portfolio website built with Next.js, TypeScript, Tailwind CSS, and MongoDB.
 
+## Live Demo
+
+🚀 Check out the live site: [Mohammed Zubair Portfolio](https://portfolio-sepia-xi-37.vercel.app/)
+
+
 ## Features
 
 - ✨ Modern, animated UI with Framer Motion
