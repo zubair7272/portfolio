@@ -3,9 +3,22 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useInView } from "react-intersection-observer";
-import { Code, FileCode, GraduationCap, Laptop, Briefcase, Star, Mail } from "lucide-react";
+import {
+  Code,
+  FileCode,
+  GraduationCap,
+  Laptop,
+  Briefcase,
+  Star,
+  Mail,
+  Phone,
+  Github,
+  Linkedin,
+  ArrowRight,
+} from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export default function HomePage() {
   return (
@@ -37,7 +50,8 @@ export default function HomePage() {
                 transition={{ delay: 0.5, duration: 0.5 }}
                 className="mb-8 text-lg text-muted-foreground"
               >
-                Passionate about creating efficient and user-friendly software solutions through innovative programming and problem-solving techniques.
+                I build full-stack web applications with Next.js, React, and Node.js—from ServiceNow integrations at
+                Computacenter to data and machine-learning projects with Python.
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -45,10 +59,10 @@ export default function HomePage() {
                 transition={{ delay: 0.7, duration: 0.5 }}
                 className="flex flex-wrap gap-4"
               >
-                <Button asChild size="lg" className="animate-pulse">
+                <Button asChild size="lg">
                   <Link href="/#contact">Get in Touch</Link>
                 </Button>
-                <Button variant="outline" size="lg">
+                <Button asChild variant="outline" size="lg">
                   <Link href="/#projects">View Projects</Link>
                 </Button>
               </motion.div>
@@ -61,11 +75,10 @@ export default function HomePage() {
             >
               <div className="relative h-[300px] w-[300px] overflow-hidden rounded-full border-4 border-primary/20 shadow-xl sm:h-[400px] sm:w-[400px]">
                 <div className="h-full w-full rounded-full bg-gradient-to-br from-primary/20 via-accent/20 to-secondary/20">
-                  {/* Profile image */}
-                  <Image 
-                    src="/Profile.JPG" 
-                    alt="Mohammed Zubair" 
-                    fill 
+                  <Image
+                    src="/Profile.JPG"
+                    alt="Mohammed Zubair"
+                    fill
                     className="object-cover"
                     priority
                   />
@@ -88,13 +101,18 @@ export default function HomePage() {
             className="space-y-4"
           >
             <p className="text-muted-foreground">
-              I am a Software Development Engineer currently working at Computacenter in Bengaluru, with a focus on web development, data analytics, and machine learning.
+              I am a Software Development Engineer currently working at Computacenter in Bengaluru, with a focus on web
+              development, data analytics, and machine learning.
             </p>
             <p className="text-muted-foreground">
-              With a strong foundation in Computer Science from CMR University and hands-on experience in multiple projects, I&apos;ve developed expertise in a range of technologies including JavaScript, TypeScript, React, Node.js, MongoDB, and more.
+              With a strong foundation in Computer Science from CMR University and hands-on experience in multiple
+              projects, I&apos;ve developed expertise in a range of technologies including JavaScript, TypeScript,
+              React, Node.js, MongoDB, and more.
             </p>
             <p className="text-muted-foreground">
-              My professional journey has equipped me with skills in collaborative development, software testing, debugging, and a keen eye for detail. I&apos;m passionate about creating efficient solutions and continuously expanding my knowledge in emerging technologies.
+              My professional journey has equipped me with skills in collaborative development, software testing,
+              debugging, and a keen eye for detail. I&apos;m passionate about creating efficient solutions and
+              continuously expanding my knowledge in emerging technologies.
             </p>
             <div className="pt-4">
               <h3 className="mb-2 text-lg font-semibold">Areas of Interest</h3>
@@ -115,7 +133,7 @@ export default function HomePage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
-            className="space-y-6 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-card p-6 shadow-sm"
+            className="space-y-6 rounded-xl border border-neutral-200 bg-card p-6 shadow-sm dark:border-neutral-800"
           >
             <div>
               <h3 className="mb-1 font-semibold">Location</h3>
@@ -132,20 +150,27 @@ export default function HomePage() {
             </div>
             <div>
               <h3 className="mb-1 font-semibold">Phone</h3>
-              <a
-                href="tel:+919035149422"
-                className="text-sm text-muted-foreground hover:text-primary"
-              >
+              <a href="tel:+919035149422" className="text-sm text-muted-foreground hover:text-primary">
                 +91 9035149422
               </a>
             </div>
             <div className="space-y-1">
               <h3 className="font-semibold">Connect</h3>
               <div className="flex gap-3 text-muted-foreground">
-                <a href="https://github.com/zubair7272" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
+                <a
+                  href="https://github.com/zubair7272"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary"
+                >
                   GitHub
                 </a>
-                <a href="https://www.linkedin.com/in/zubair7272/" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
+                <a
+                  href="https://www.linkedin.com/in/zubair7272/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary"
+                >
                   LinkedIn
                 </a>
               </div>
@@ -157,34 +182,19 @@ export default function HomePage() {
       {/* Skills Section */}
       <SectionContainer id="skills" title="Skills" icon={<Star className="h-5 w-5" />}>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          <SkillCard
-            title="Languages"
-            skills={["JavaScript", "Python", "Java", "TypeScript", "C"]}
-          />
-          <SkillCard
-            title="Frontend"
-            skills={["HTML", "CSS", "React", "Next.js"]}
-          />
-          <SkillCard
-            title="Backend"
-            skills={["Node.js", "Express.js"]}
-          />
-          <SkillCard
-            title="Databases"
-            skills={["MongoDB", "MySQL"]}
-          />
-          <SkillCard
-            title="Data Analytics & Visualization"
-            skills={["PowerBI", "Excel"]}
-          />
+          <SkillCard title="Languages" skills={["JavaScript", "Python", "Java", "TypeScript", "C"]} />
+          <SkillCard title="Frontend" skills={["HTML", "CSS", "React", "Next.js"]} />
+          <SkillCard title="Backend" skills={["Node.js", "Express.js"]} />
+          <SkillCard title="Databases" skills={["MongoDB", "MySQL"]} />
+          <SkillCard title="Data Analytics & Visualization" skills={["PowerBI", "Excel"]} />
           <SkillCard
             title="Data Science & Machine Learning"
             skills={["Pandas", "NumPy", "Scikit-Learn", "TensorFlow", "Matplotlib"]}
           />
           <SkillCard
             className="md:col-span-2 lg:col-span-3"
-            title="Other Skills"
-            skills={["Programming", "Software Developing", "Software Testing", "Debugging", "Problem Solving"]}
+            title="Engineering Practices"
+            skills={["Software Testing", "Debugging", "REST APIs"]}
           />
         </div>
       </SectionContainer>
@@ -224,40 +234,16 @@ export default function HomePage() {
             location="Bengaluru"
             period="Aug 2019 - May 2023"
           />
-          <TimelineItem
-            title="PUC PCMC"
-            company="Reva Independent PU College"
-            location="Bengaluru"
-            period="Jul 2017 - Apr 2019"
-          />
-          <TimelineItem
-            title="SSLC"
-            company="St Joseph&apos;s English High School"
-            location="Bengaluru"
-            period="June 2016 - Apr 2017"
-          />
         </motion.div>
       </SectionContainer>
 
       {/* Certifications Section */}
       <SectionContainer id="certifications" title="Certifications" icon={<FileCode className="h-5 w-5" />}>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <CertificationCard
-            title="Career Essentials in Software Development"
-            issuer="Microsoft and LinkedIn"
-          />
-          <CertificationCard
-            title="IBM Skills Build On Data Analytics"
-            issuer="IBM"
-          />
-          <CertificationCard
-            title="Business Administration Specialist"
-            issuer="Salesforce"
-          />
-          <CertificationCard
-            title="Full Stack Development"
-            issuer="100 Xdevs"
-          />
+          <CertificationCard title="Career Essentials in Software Development" issuer="Microsoft and LinkedIn" />
+          <CertificationCard title="IBM Skills Build On Data Analytics" issuer="IBM" />
+          <CertificationCard title="Business Administration Specialist" issuer="Salesforce" />
+          <CertificationCard title="Full Stack Development" issuer="100 Xdevs" />
         </div>
       </SectionContainer>
 
@@ -266,32 +252,33 @@ export default function HomePage() {
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           <ProjectCard
             title="ServiceNow Integration Application"
-            description="Integrated a web application with ServiceNow to streamline ticket creation and documentation. Developed RESTful APIs for direct support ticket generation, enhancing efficiency and improving support efficiency and reducing response time by 62%."
+            description="Integrated an internal web application with ServiceNow so support tickets could be raised without leaving the product. Built REST APIs for ticket creation and documentation handoff, cutting response time by 62%."
             technologies={["Next.js", "ServiceNow", "Node.js", "REST API"]}
           />
           <ProjectCard
             title="Food Ordering Application"
-            description="Created a full-stack food ordering application using React and Node.js/Express. Managed user data and orders with MongoDB, implementing real-time notifications for updates. Conducted usability testing to optimize user experience, resulting in increased retention."
+            description="Built a full-stack ordering flow with React and Node.js/Express, persisting users and orders in MongoDB and pushing real-time order updates. Ran usability testing to refine the checkout experience."
             technologies={["React", "Node.js", "Express", "MongoDB"]}
           />
           <ProjectCard
             title="AI Assistant for Desktop"
-            description="Built an AI-powered desktop assistant in Python for task automation, including scheduling and reminders. Integrated voice recognition for usability and utilized machine learning for task prediction."
+            description="Developed a Python desktop assistant to automate scheduling and reminders, combining voice input with lightweight ML for task suggestions."
             technologies={["Python", "Machine Learning", "Voice Recognition"]}
           />
           <ProjectCard
             title="Blood Bank Management System"
-            description="Designed a web application for blood bank operations using Java and Spring Boot. Managed donor registration and inventory tracking with a MySQL database and user roles."
+            description="Designed a Spring Boot web app for donor registration and blood inventory tracking, with role-based access backed by MySQL."
             technologies={["Java", "Spring Boot", "MySQL"]}
+            github="https://github.com/zubair7272/BLOOD-BANK-MANAGEMENT-SYSTEM-"
           />
           <ProjectCard
             title="Stock Trend Prediction Using Machine Learning"
-            description="Implemented algorithms to predict stock trends using Python, Pandas, and Scikit-Learn. Developed a predictive model with 67% Accuracy, visualizing results with Matplotlib."
+            description="Trained classification models in Python with Pandas and Scikit-Learn on historical market data, reaching 67% accuracy and visualizing trends with Matplotlib."
             technologies={["Python", "Pandas", "Scikit-Learn", "Matplotlib"]}
           />
           <ProjectCard
             title="Music Player Android Application"
-            description="Developed a music player app for Android using Java, featuring playlists and background playback. Ensured compatibility across devices through thorough testing."
+            description="Shipped an Android music player in Java with playlists and background playback, validating behaviour across device profiles through structured testing."
             technologies={["Java", "Android"]}
           />
         </div>
@@ -309,24 +296,19 @@ export default function HomePage() {
           >
             <h3 className="text-xl font-semibold">Get in Touch</h3>
             <p className="text-muted-foreground">
-              Feel free to reach out to me for any opportunities, collaborations, or just to say hello. I&apos;m always open to discussing new projects and ideas.
+              Feel free to reach out to me for any opportunities, collaborations, or just to say hello. I&apos;m always
+              open to discussing new projects and ideas.
             </p>
             <div className="space-y-3 pt-4">
               <div className="flex items-center">
                 <Mail className="mr-3 h-5 w-5 text-muted-foreground" />
-                <a
-                  href="mailto:zubairmohammed7272@gmail.com"
-                  className="text-muted-foreground hover:text-foreground"
-                >
+                <a href="mailto:zubairmohammed7272@gmail.com" className="text-muted-foreground hover:text-foreground">
                   zubairmohammed7272@gmail.com
                 </a>
               </div>
               <div className="flex items-center">
                 <Phone className="mr-3 h-5 w-5 text-muted-foreground" />
-                <a
-                  href="tel:+919035149422"
-                  className="text-muted-foreground hover:text-foreground"
-                >
+                <a href="tel:+919035149422" className="text-muted-foreground hover:text-foreground">
                   +91 9035149422
                 </a>
               </div>
@@ -350,70 +332,12 @@ export default function HomePage() {
               </a>
             </div>
           </motion.div>
-          {/* <motion.form
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="space-y-4 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-card p-6 shadow-sm"
-          >
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="space-y-2">
-                <label htmlFor="name" className="text-sm font-medium">
-                  Name
-                </label>
-                <input
-                  id="name"
-                  type="text"
-                  className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
-                  placeholder="Your name"
-                />
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="email" className="text-sm font-medium">
-                  Email
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
-                  placeholder="Your email"
-                />
-              </div>
-            </div>
-            <div className="space-y-2">
-              <label htmlFor="subject" className="text-sm font-medium">
-                Subject
-              </label>
-              <input
-                id="subject"
-                type="text"
-                className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
-                placeholder="Subject"
-              />
-            </div>
-            <div className="space-y-2">
-              <label htmlFor="message" className="text-sm font-medium">
-                Message
-              </label>
-              <textarea
-                id="message"
-                rows={4}
-                className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
-                placeholder="Your message"
-              ></textarea>
-            </div>
-            <Button type="submit" className="w-full">
-              Send Message
-            </Button>
-          </motion.form> */}
         </div>
       </SectionContainer>
     </div>
   );
 }
 
-// Reusable Components
 function SectionContainer({
   id,
   title,
@@ -434,7 +358,7 @@ function SectionContainer({
     <section
       id={id}
       ref={ref}
-      className="border-t border-neutral-200/40 dark:border-neutral-800/40 bg-background py-16 md:py-24"
+      className="border-t border-neutral-200/40 bg-background py-16 dark:border-neutral-800/40 md:py-24"
     >
       <div className="container">
         <motion.div
@@ -443,9 +367,7 @@ function SectionContainer({
           transition={{ duration: 0.5 }}
           className="mb-12 flex items-center"
         >
-          <div className="mr-4 rounded-md bg-primary/10 p-2 text-primary">
-            {icon}
-          </div>
+          <div className="mr-4 rounded-md bg-primary/10 p-2 text-primary">{icon}</div>
           <h2 className="text-3xl font-bold tracking-tight">{title}</h2>
         </motion.div>
         {children}
@@ -475,7 +397,7 @@ function SkillCard({
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.5 }}
       className={cn(
-        "rounded-xl border border-neutral-200 dark:border-neutral-800 bg-card p-6 shadow-sm",
+        "rounded-xl border border-neutral-200 bg-card p-6 shadow-sm dark:border-neutral-800",
         className
       )}
     >
@@ -513,12 +435,10 @@ function TimelineItem({
   technologies?: string[];
 }) {
   return (
-    <div className="relative border-l border-neutral-200 dark:border-neutral-800 pl-8 before:absolute before:left-[-8px] before:top-[12px] before:h-4 before:w-4 before:rounded-full before:border-2 before:border-neutral-200 dark:before:border-neutral-800 before:bg-background">
+    <div className="relative border-l border-neutral-200 pl-8 before:absolute before:left-[-8px] before:top-[12px] before:h-4 before:w-4 before:rounded-full before:border-2 before:border-neutral-200 before:bg-background dark:border-neutral-800 dark:before:border-neutral-800">
       <div className="mb-1 flex items-center justify-between">
         <h3 className="text-xl font-semibold">{title}</h3>
-        <span className="rounded-full bg-primary/10 px-3 py-1 text-xs text-primary">
-          {period}
-        </span>
+        <span className="rounded-full bg-primary/10 px-3 py-1 text-xs text-primary">{period}</span>
       </div>
       <div className="mb-3 text-muted-foreground">
         {company} • {location}
@@ -527,10 +447,7 @@ function TimelineItem({
       {technologies && (
         <div className="flex flex-wrap gap-2">
           {technologies.map((tech, i) => (
-            <span
-              key={i}
-              className="rounded-md bg-secondary px-2 py-1 text-xs text-secondary-foreground"
-            >
+            <span key={i} className="rounded-md bg-secondary px-2 py-1 text-xs text-secondary-foreground">
               {tech}
             </span>
           ))}
@@ -562,7 +479,7 @@ function CertificationCard({
       initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.4 }}
-      className="group relative overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800 bg-card transition-all hover:border-primary/50 hover:shadow-md"
+      className="group relative overflow-hidden rounded-lg border border-neutral-200 bg-card transition-all hover:border-primary/50 hover:shadow-md dark:border-neutral-800"
     >
       <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
       <div className="relative z-10 flex h-full flex-col justify-between p-6">
@@ -607,13 +524,15 @@ function ProjectCard({
     triggerOnce: true,
   });
 
+  const hasLinks = Boolean(url || github);
+
   return (
     <motion.div
       ref={ref}
       initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.5 }}
-      className="group flex flex-col overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800 bg-card shadow-sm transition-all hover:shadow-md"
+      className="group flex flex-col overflow-hidden rounded-lg border border-neutral-200 bg-card shadow-sm transition-all hover:shadow-md dark:border-neutral-800"
     >
       {image ? (
         <div className="relative h-48 overflow-hidden">
@@ -647,27 +566,25 @@ function ProjectCard({
             ))}
           </div>
         </div>
-        <div className="flex gap-4">
-          {url && (
-            <Button variant="outline" size="sm" asChild>
-              <a href={url} target="_blank" rel="noopener noreferrer">
-                Live Demo
-              </a>
-            </Button>
-          )}
-          {github && (
-            <Button variant="outline" size="sm" asChild>
-              <a href={github} target="_blank" rel="noopener noreferrer">
-                GitHub
-              </a>
-            </Button>
-          )}
-        </div>
+        {hasLinks && (
+          <div className="flex gap-4">
+            {url && (
+              <Button variant="outline" size="sm" asChild>
+                <a href={url} target="_blank" rel="noopener noreferrer">
+                  Live Demo
+                </a>
+              </Button>
+            )}
+            {github && (
+              <Button variant="outline" size="sm" asChild>
+                <a href={github} target="_blank" rel="noopener noreferrer">
+                  GitHub
+                </a>
+              </Button>
+            )}
+          </div>
+        )}
       </div>
     </motion.div>
   );
 }
-
-// Import missing components from the code above
-import { Phone, Github, Linkedin, ArrowRight } from "lucide-react";
-import { cn } from "@/lib/utils"; 

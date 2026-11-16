@@ -1,120 +1,94 @@
 # Mohammed Zubair Portfolio
 
-A modern, animated portfolio website built with Next.js, TypeScript, Tailwind CSS, and MongoDB.
+Personal portfolio site for Mohammed Zubair — Software Development Engineer at Computacenter, Bengaluru.
 
-## Live Demo
+**Live site:** [portfolio-sepia-xi-37.vercel.app](https://portfolio-sepia-xi-37.vercel.app/)
 
-🚀 Check out the live site: [Mohammed Zubair Portfolio](https://portfolio-sepia-xi-37.vercel.app/)
+![Homepage preview](./public/screenshot-home-light.png)
 
+## What this project is
+
+A single-page portfolio built with the Next.js App Router. Résumé content (about, skills, experience, education, certifications, projects, and contact) lives in `src/app/(main)/page.tsx` as structured React components. There is no separate CMS or database: updates are made directly in the codebase.
 
 ## Features
 
-- ✨ Modern, animated UI with Framer Motion
-- 🌓 Dark/light mode support
-- 📱 Fully responsive design
-- 🔒 Authentication system for admin access
-- 📝 Admin dashboard for content management
-- 🗄️ MongoDB database for storing portfolio data
-- 📊 Interactive and eye-catching components
+- Responsive layout with section anchors
+- Light and dark themes (`next-themes`)
+- Scroll-driven section animations (Framer Motion + `react-intersection-observer`)
+- Project cards with optional GitHub and live-demo links (rendered only when provided)
 
-## Tech Stack
+## Tech stack
 
-- **Frontend**: Next.js, React, TypeScript, Tailwind CSS, Framer Motion
-- **Authentication**: NextAuth.js
-- **Database**: MongoDB with Mongoose
-- **Styling**: Tailwind CSS, SASS
-- **Icons**: Lucide React
-- **Animations**: Framer Motion, GSAP, Lottie
-- **Deployment**: Vercel (recommended)
+| Layer | Choices |
+| --- | --- |
+| Framework | Next.js 15, React 19, TypeScript |
+| Styling | Tailwind CSS, `tailwindcss-animate` |
+| UI | Radix Slot, class-variance-authority, Lucide icons |
+| Motion | Framer Motion |
+| Deployment | Vercel |
 
-## Getting Started
+## Architecture
+
+```
+src/
+├── app/
+│   ├── (main)/          # Public portfolio route group
+│   │   ├── layout.tsx   # Header + main + footer shell
+│   │   └── page.tsx     # All homepage sections and content
+│   ├── layout.tsx       # Root layout, fonts, theme provider
+│   └── globals.css      # Design tokens and CSS animations
+├── components/          # Header, footer, theme toggle, shared UI
+├── lib/utils.ts         # `cn()` helper for Tailwind class merging
+└── providers/           # Theme provider wrapper
+```
+
+**Request flow:** The root layout wraps the app in `ThemeProvider`. The `(main)` layout adds navigation chrome; `page.tsx` renders the full scrollable portfolio as client components with in-view animations.
+
+## Getting started
 
 ### Prerequisites
 
-- Node.js (v16 or higher)
-- MongoDB database (local or Atlas)
+- Node.js 18+ (20 recommended)
+- npm
 
 ### Installation
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/portfolio.git
-   cd portfolio
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Create a `.env.local` file in the root directory with the following variables:
-   ```
-   MONGODB_URI=your_mongodb_connection_string
-   NEXTAUTH_SECRET=your_nextauth_secret_key
-   NEXTAUTH_URL=http://localhost:3000
-   ```
-
-4. Start the development server:
-   ```bash
-   npm run dev
-   ```
-
-5. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### Setting Up Admin User
-
-To create an initial admin user:
-
-1. Start the development server
-2. Visit [http://localhost:3000/api/setup](http://localhost:3000/api/setup)
-3. This will create an admin user with these credentials:
-   - Email: zubairmohammed7272@gmail.com
-   - Password: AdminPassword123!
-4. Login at [http://localhost:3000/admin/login](http://localhost:3000/admin/login)
-5. Change the default password immediately from the admin dashboard
-
-## Project Structure
-
+```bash
+git clone https://github.com/zubair7272/portfolio.git
+cd portfolio
+npm install
+npm run dev
 ```
-portfolio/
-├── public/             # Static assets
-├── src/
-│   ├── app/            # Next.js App Router
-│   │   ├── (main)/     # Main portfolio routes
-│   │   ├── admin/      # Admin dashboard routes
-│   │   └── api/        # API routes
-│   ├── components/     # Reusable components
-│   │   ├── ui/         # UI components
-│   │   └── ...         # Other components
-│   ├── lib/            # Utility functions
-│   ├── models/         # MongoDB models
-│   ├── providers/      # Context providers
-│   └── types/          # TypeScript type definitions
-├── .env.local          # Environment variables
-└── ...                 # Config files
-```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+### Scripts
+
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Local development server |
+| `npm run build` | Production build |
+| `npm run start` | Serve production build |
+| `npm run lint` | ESLint (Next.js flat config in `eslint.config.mjs`) |
+
+No environment variables are required for the public portfolio.
 
 ## Customization
 
-### Styling
-
-- Global styles are in `src/app/globals.css`
-- Component-specific styles use Tailwind CSS utility classes
-- Theme configuration is in `tailwind.config.ts`
-
-### Content
-
-Edit your portfolio content through the admin dashboard or directly in the MongoDB database.
+- **Copy and sections:** Edit `src/app/(main)/page.tsx`.
+- **Theme tokens:** CSS variables in `src/app/globals.css`; Tailwind theme in `tailwind.config.js`.
+- **Navigation:** `src/components/header.tsx` and `src/components/footer.tsx`.
 
 ## Deployment
 
-Deploy the application to Vercel:
+The site is deployed on Vercel. Push to the default branch or run:
 
 ```bash
 npm run build
-vercel
 ```
+
+Connect the GitHub repository in the Vercel dashboard for automatic preview deployments.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+MIT
