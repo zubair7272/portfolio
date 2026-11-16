@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { ThemeToggle } from "./theme-toggle";
 import { cn } from "@/lib/utils";
-import { SignInButton, SignedIn, SignedOut, UserButton, useUser } from "@clerk/nextjs";
 
 const navItems = [
   { name: "Home", path: "/" },
@@ -18,11 +17,9 @@ const navItems = [
 
 export function Header() {
   const pathname = usePathname();
-  const { user } = useUser();
-  const isAdmin = user?.publicMetadata?.role === 'admin';
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-neutral-200/40 dark:border-neutral-800/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-neutral-200/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 dark:border-neutral-800/40">
       <div className="container flex h-16 items-center">
         <div className="mr-4 hidden md:flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
@@ -30,7 +27,7 @@ export function Header() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="font-bold text-xl"
+              className="text-xl font-bold"
             >
               Mohammed Zubair
             </motion.span>
@@ -56,32 +53,10 @@ export function Header() {
             ))}
           </nav>
         </div>
-        <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
-          <div className="w-full flex-1 md:w-auto md:flex-none">
-            <div className="hidden md:block">
-              {/* Search component can go here */}
-            </div>
-          </div>
-          <nav className="flex items-center space-x-4">
-            <ThemeToggle />
-            <SignedIn>
-              {isAdmin && (
-                <Link href="/admin/dashboard" className="text-sm font-medium text-foreground/60 hover:text-foreground">
-                  Dashboard
-                </Link>
-              )}
-              <UserButton afterSignOutUrl="/" />
-            </SignedIn>
-            <SignedOut>
-              <SignInButton mode="modal">
-                <button className="text-sm font-medium text-foreground/60 hover:text-foreground">
-                  Login
-                </button>
-              </SignInButton>
-            </SignedOut>
-          </nav>
+        <div className="flex flex-1 items-center justify-end">
+          <ThemeToggle />
         </div>
       </div>
     </header>
   );
-} 
+}
